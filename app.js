@@ -1,6 +1,6 @@
-const app = require('express')();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const http = require('http');
+const server = http.createServer();
+const io = require('socket.io')(server);
 
 io.on("connection", socket => {
     // ...
@@ -14,3 +14,5 @@ io.on("connection", socket => {
 
     socket.on('disconnect', () => {});
   });
+  
+server.listen(3000);
